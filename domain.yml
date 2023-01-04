@@ -8,6 +8,10 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - show_list
+
+actions:
+  - action_show_list
 
 responses:
   utter_greet:
@@ -28,6 +32,9 @@ responses:
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+  utter_list:
+  - text: "This is the list of uppercase letters:\n{upper_case_list}'This is the list of lower case letters:\n{lower_case_list}"
 
 session_config:
   session_expiration_time: 60

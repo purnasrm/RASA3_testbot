@@ -11,3 +11,8 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: show list
+  steps:
+  - intent: show_list
+  - action: action_show_list
