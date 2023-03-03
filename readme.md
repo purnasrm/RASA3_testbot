@@ -1,0 +1,1 @@
+use "rasa train --data data --domain domain" to train the model 
