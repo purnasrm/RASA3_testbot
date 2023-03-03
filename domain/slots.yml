@@ -1,0 +1,58 @@
+version: "3.1"
+
+slots:
+  name:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: name
+      conditions:
+      - active_loop: person_form
+        requested_slot: name
+    - type: from_text
+      intent:
+      - inform
+  age:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: number
+      conditions:
+      - active_loop: person_form
+        requested_slot: age
+  brand:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: brand
+      conditions:
+      - active_loop: person_form
+        requested_slot: brand
+    - type: from_text
+      intent:
+      - inform
+  model:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: brand
+      conditions:
+      - active_loop: person_form
+        requested_slot: brand
+    - type: from_text
+      intent:
+      - inform
+  previous_form_name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: custom
+  next_form_name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: custom

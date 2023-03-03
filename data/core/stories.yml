@@ -28,3 +28,74 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+
+- story: ecord person + switch to record car, deny
+  steps:
+  - intent: record_person
+  - action: person_form
+  - active_loop: person_form
+  - intent: record_car
+  - action: action_switch_forms_ask
+  - slot_was_set:
+    - next_form_name: another form
+  - intent: deny
+  - action: action_switch_forms_deny
+  - slot_was_set:
+    - next_form_name: null
+  - action: person_form
+  - active_loop: person_form
+
+- story: record person + switch to record car, affirm + switch back, deny
+  steps:
+  - intent: record_person
+  - action: person_form
+  - active_loop: person_form
+  - intent: record_car
+  - action: action_switch_forms_ask
+  - slot_was_set:
+    - next_form_name: record_car
+  - intent: affirm
+  - action: action_switch_forms_affirm
+  - slot_was_set:
+    - next_form_name: null
+  - slot_was_set:
+    - previous_form_name: person_form
+  - action: car_form
+  - active_loop: car_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_record_car
+  - action: action_switch_back_ask
+  - slot_was_set:
+    - previous_form_name: null
+  - intent: deny
+  - action: utter_ask_whatelse
+
+- story: record person + switch to record car, affirm + switch back, affirm
+  steps:
+  - intent: record_person
+  - action: person_form
+  - active_loop: person_form
+  - intent: record_car
+  - action: action_switch_forms_ask
+  - slot_was_set:
+    - next_form_name: record_car
+  - intent: affirm
+  - action: action_switch_forms_affirm
+  - slot_was_set:
+    - next_form_name: null
+  - slot_was_set:
+    - previous_form_name: person_form
+  - action: car_form
+  - active_loop: car_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_record_car
+  - action: action_switch_back_ask
+  - slot_was_set:
+    - previous_form_name: null
+  - intent: affirm
+  - action: person_form
+  - active_loop: person_form

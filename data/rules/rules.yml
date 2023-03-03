@@ -16,3 +16,45 @@ rules:
   steps:
   - intent: hello_world
   - action: action_hello_world
+
+- rule: Activate person_form when no other form is active
+  condition:
+  # this condition allows stories to handle form switching
+  - active_loop: null
+  steps:
+  - intent: record_person
+  - action: person_form
+  - active_loop: person_form
+
+- rule: Activate car_form when no other form is active
+  condition:
+  # this condition allows stories to handle form switching
+  - active_loop: null
+  steps:
+  - intent: record_car
+  - action: car_form
+  - active_loop: car_form
+
+- rule: Submit person_form while not switched from previous form
+  condition:
+  - active_loop: person_form
+  - slot_was_set:
+    - previous_form_name: null
+  steps:
+  - action: person_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_record_person
+
+- rule: Submit car_form while not switched from previous form
+  condition:
+  - active_loop: car_form
+  - slot_was_set:
+    - previous_form_name: null
+  steps:
+  - action: car_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_record_car

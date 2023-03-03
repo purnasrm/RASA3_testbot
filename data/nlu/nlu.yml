@@ -96,3 +96,42 @@ nlu:
     - hello world please
     - can you say hello world
     - say hello to the world please
+
+- intent: record_person
+  examples: |
+    - record a person
+    - record a person please
+    - I want to record a person
+    - record person
+    - can I record a person
+
+- intent: record_car
+  examples: |
+    - record a car
+    - record a car please
+    - I want to record a car
+    - record car
+    - can I record a car
+
+- intent: inform
+  examples: |
+   - [toyota](brand)
+   - [mazda](brand)
+   - [bmw](brand)
+   - [honda](brand)
+   - [s300](model)
+   - [s200](model)
+   - [c300](model)
+   - [520d](model)
+   - [b12](model)
+   - [James](name)
+   - [Ravi](name)
+   - [Amy](name)
+   - [Malith](name)
+   - [Arjuna](name)
+   - [Rasika](name)
+   - [Laura](name)
+   - [22]number
+   - [31]number
+   - [40]number
+   - [20]number

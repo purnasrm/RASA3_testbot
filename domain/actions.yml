@@ -1,4 +1,10 @@
 version: "3.1"
 
 actions:
-  - action_hello_world
+- action_hello_world
+- action_switch_forms_ask
+- action_switch_forms_deny
+- action_switch_forms_affirm
+- action_switch_back_ask
+- action_record_car
+- action_record_person
