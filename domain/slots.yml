@@ -13,12 +13,24 @@ slots:
     - type: from_text
       intent:
       - inform
+      conditions:
+      - active_loop: person_form
+        requested_slot: name
   age:
     type: text
     influence_conversation: false
     mappings:
     - type: from_entity
       entity: number
+      intent:
+      - inform
+      conditions:
+      - active_loop: person_form
+        requested_slot: age
+      mappings:
+    - type: from_text
+      intent:
+      - inform
       conditions:
       - active_loop: person_form
         requested_slot: age
@@ -29,23 +41,29 @@ slots:
     - type: from_entity
       entity: brand
       conditions:
-      - active_loop: person_form
+      - active_loop: car_form
         requested_slot: brand
     - type: from_text
       intent:
       - inform
+      conditions:
+      - active_loop: car_form
+        requested_slot: brand
   model:
     type: text
     influence_conversation: false
     mappings:
     - type: from_entity
-      entity: brand
+      entity: model
       conditions:
-      - active_loop: person_form
-        requested_slot: brand
+      - active_loop: car_form
+        requested_slot: model
     - type: from_text
       intent:
       - inform
+      conditions:
+      - active_loop: car_form
+        requested_slot: model
   previous_form_name:
     type: text
     influence_conversation: true
@@ -56,3 +74,7 @@ slots:
     influence_conversation: true
     mappings:
     - type: custom
+  # repeated_validation_failures:
+  #   type: any
+  # AA_CONTINUE_FORM:
+  #   type: any

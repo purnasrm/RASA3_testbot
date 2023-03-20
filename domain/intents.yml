@@ -11,3 +11,4 @@ intents:
 - hello_world
 - record_person
 - record_car
+- inform

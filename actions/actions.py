@@ -1,9 +1,8 @@
-# This is a simple example for a custom action which utters "Hello World!"
-
 from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import SlotSet
 
 import logging
 
@@ -32,10 +31,16 @@ class ActionRecordCar(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
+        brand = tracker.get_slot("brand")
+        log.info(f'brand: {brand}')
+        model = tracker.get_slot("model")
+        log.info(f'model: {model}')
         dispatcher.utter_message(text="Car recorded!")
 
-        return []
+        return [
+            SlotSet("brand", None),
+            SlotSet("model", None)
+        ]
 
 
 class ActionRecordPerson(Action):
@@ -46,7 +51,13 @@ class ActionRecordPerson(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
+        name = tracker.get_slot("name")
+        log.info(f'name: {name}')
+        age = tracker.get_slot("age")
+        log.info(f'age: {age}')
         dispatcher.utter_message(text="Person recorded!")
 
-        return []
+        return [
+            SlotSet("name", None),
+            SlotSet("age", None)
+        ]
